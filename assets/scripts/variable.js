@@ -1,0 +1,1 @@
+// Configuration script for your Javascript variables
