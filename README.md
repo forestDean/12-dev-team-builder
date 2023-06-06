@@ -34,7 +34,7 @@ A [**sample--team.html**](https://github.com/forestDean/12-team-profile-generato
 ## Tests
 <a name="test"></a>
 The built-in tests use `Jest` to check the code functionality of the app classes.   
-- The tests are initialised with the terminal command `node index`
+- The tests are initialised with the terminal command `npm run test`
 
 ![jest-test](./assets/images/jest-test-pass-600.png)
 
