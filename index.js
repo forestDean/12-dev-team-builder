@@ -16,8 +16,7 @@ const team = [];
 
 // render the HTML file.
 function writeToFile(team) { 
-    console.log(chalk.green.bold('\n...writeToFile...')); 
-    console.log(outputPath);
+    console.log(chalk.green.bold('\n...writeToFile...')); ;
 
     fs.writeFile(outputPath, render(team),
        (err) =>
@@ -34,12 +33,12 @@ function init () {
 }
     const askQuestions = (taskRole) => { ;
         const defineRole = { role: taskRole };
-        console.info(defineRole);
+        // console.info(defineRole);
 
         return inquirer
             .prompt(questions, defineRole)
             .then(answers => {
-                console.log('Role: ' + answers.role);
+                // console.log('Role: ' + answers.role);
                 switch (answers.role) {
                     case undefined:
                         const manager = new Manager (answers.name, answers.id, answers.email, answers.officeNumber);
@@ -75,17 +74,14 @@ const taskMenu = () => {
     inquirer
         .prompt(taskmenu)
         .then(answer => {
-            console.log('TASK: ' + Object.values(answer));;
 
             const task = Object.values(answer);
             if (task == 'Finish building the team') {
-                console.log(chalk.green.bold("...building!"));
+                // console.log(chalk.green.bold("...building!"));
                 writeToFile(team);
             } else if (task == 'Add an engineer') {
-                console.log(chalk.green.bold("...adding an engineer!"));
                 askQuestions ('Engineer'); 
             } else if (task == 'Add an intern') {
-                console.log(chalk.green.bold("...adding an intern!"));        ;
                 askQuestions ('Intern');        
             } else {
                 console.log(chalk.red.bold('Task Menu error'));
