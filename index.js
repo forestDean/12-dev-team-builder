@@ -14,6 +14,7 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./src/page-template.js");
 const team = [];
+let defineRole = '';
 
 // TODO: Write Code to gather information about the development team members, and render the HTML file.
 
@@ -38,10 +39,15 @@ function writeToFile(team) {
 function init () {
     console.log(chalk.cyan.bold('\nWelcome to the TEAM generator\n'));
     console.log('Enter the required data for the', chalk.cyan.bold('TEAM MANAGER'),'...');
-
-    const askQuestions = () => { 
+    askQuestions(); 
+}
+    const askQuestions = (taskRole) => { 
+        // const answers = {}
+        // const answers.role = role;
+        const defineRole = { role: taskRole };
+        console.info(defineRole);
         return inquirer
-            .prompt(questions)
+            .prompt(questions, defineRole)
             .then(answers => {
                 console.log('Role: ' + answers.role);
                 switch (answers.role) {
@@ -63,67 +69,64 @@ function init () {
 
                 console.info(team);
                 taskMenu();
-                // console.info(chalk.green.bold('ANSWERS: '), answers);
-                // console.info(team);
-                // console.log(answers.role);
-                // writeToFile(team);
             })
-            // .then(
-            //     inquirer.prompt(taskmenu)
-            // )
             .catch((error) => {
                 if (error.isTtyError) {
                 console.log(chalk.red.bold('Unable to render prompt in the current environment'));
                 } else {
                 console.log(chalk.red.bold('Unknown error'));
                 }
-            });
-
-            
-            
+            });  
         };
-        askQuestions();   
-}
+//         askQuestions();   
+// }
 
 const taskMenu = () => {
     inquirer
-    .prompt(taskmenu)
-    .then(answer => {
-        console.log('TASK: ' + Object.values(answer));;
+        .prompt(taskmenu)
+        .then(answer => {
+            console.log('TASK: ' + Object.values(answer));;
 
-        const task = Object.values(answer);
-        if (task == 'Finish building the team') {
-            console.log(chalk.green.bold("...building!"));
-            writeToFile(team);
-        } else if (task == 'Add an engineer') {
-            console.log(chalk.green.bold("...adding an engineer!"));
-            answers.role = 'Engineer';
-            askQuestions (); 
-        } else if (task == 'Add an intern') {
-            console.log(chalk.green.bold("...adding an intern!"));        
-            answers.role = 'Intern';
-            askQuestions ();        
-        } else {
-            console.log(chalk.red.bold('Task Menu error'));
-        }
+            const task = Object.values(answer);
+            if (task == 'Finish building the team') {
+                console.log(chalk.green.bold("...building!"));
+                writeToFile(team);
+            } else if (task == 'Add an engineer') {
+                console.log(chalk.green.bold("...adding an engineer!"));
+                askQuestions ('Engineer'); 
+            } else if (task == 'Add an intern') {
+                console.log(chalk.green.bold("...adding an intern!"));        ;
+                askQuestions ('Intern');        
+            } else {
+                console.log(chalk.red.bold('Task Menu error'));
+            }
 
-        // switch (task) {
-        //     case 'Finish building the team' :
-        //         console.log(chalk.green.bold("...building!"));
-        //         writeToFile(team);
-        //         break;
-        //     case 'Add an engineer' :
-        //         answers.role = 'Engineer';
-        //         askQuestions (); 
-        //         break;
-        //     case 'Add an intern' :
-        //         answers.role = 'Intern';
-        //         askQuestions (); 
-        //         break;
-        //     default:
-        //         console.log(chalk.red.bold('Task Menu error'));
-        // }
-    });
+            // switch (task) {
+            //     case 'Finish building the team' :
+            //         console.log(chalk.green.bold("...building!"));
+            //         writeToFile(team);
+            //         break;
+            //     case 'Add an engineer' :
+            //         askQuestions ('Engineer'); 
+            //         break;
+            //     case 'Add an intern' :
+            //         askQuestions ('Intern'); 
+            //         break;
+            //     default:
+            //         console.log(chalk.red.bold('Task Menu error'));
+            // }
+
+            })
+            .catch((error) => {
+                if (error.isTtyError) {
+                console.log(chalk.red.bold('Unable to render prompt in the current environment'));
+                } else {
+                console.log(chalk.red.bold('Unknown error'));
+                }
+            
+            })
+    
+    //});
 } 
     
 // function call to initialize program
