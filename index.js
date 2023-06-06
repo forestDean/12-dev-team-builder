@@ -6,24 +6,32 @@ const path = require("path");
 const fs = require("fs");
 const chalk = require("chalk");
 const { questions } = require("./lib/questions");
-
+//const { team } = require("./src/page-template");
 
 const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./src/page-template.js");
+const team = [];
 
 // TODO: Write Code to gather information about the development team members, and render the HTML file.
-// function to write README file
-// function writeToFile(data) {  
-//     let markup = generateMarkdown(data);
-//     fs.writeFile('generated--README.md', markup,
-//        (err) =>
-//          err ? console.error(chalk.red.bold(err)) : console.log(chalk.green.bold('\nSuccessfully written to generated--README.md'))
-//         )
-// }
 
-// function to initialize program
+// function to render the HTML file.
+function writeToFile(team) { 
+    console.log(chalk.green.bold('\n...writeToFile...')); 
+    //console.log(answers);
+
+    //let markup = team(answers); // unknown error
+    //let markup = render(answers);
+
+    fs.writeFile(outputPath, render(team),
+    //fs.writeFile(render, answers,
+       (err) =>
+         err ? console.error(chalk.red.bold(err)) : console.log(chalk.green.bold('\nSuccessfully written to file'))
+        )
+}
+
+// Code to gather information about the development team members
     function init () {
         console.log(chalk.cyan.bold('\nWelcome to the TEAM generator\n'));
         console.log('Enter the required data for the', chalk.cyan.bold('TEAM MANAGER'),'...');
@@ -34,21 +42,25 @@ const render = require("./src/page-template.js");
             return inquirer
                 .prompt(questions)
                 .then(answers => {
-                    // if (data.options === 'Finish building the team') {
-                    // console.info(chalk.green.bold('ANSWERS: '), data)
-                    if (answers.options === 'Add an engineer') {
-                        console.log(chalk.cyan.bold('\nENGINEER: '));
-                        //answers.role = 'Engineer';
-                        askQuestions ('Engineer');
-                    } else if (answers.options === 'Add an intern') {
-                        console.log(chalk.cyan.bold('\nINTERN: '));
-                        answers.role = 'Intern';
-                        askQuestions ();
-                    } else {
-                        console.log(chalk.green.bold('\nFINISHED!'));
-                    // writeToFile(data)
-                    // render
-                    }
+                    console.info(chalk.green.bold('ANSWERS: '), answers)
+                    //const manager = new Manager (name, id, email, officeNumber);
+                    const manager = new Manager (answers);
+                    team.push(manager);
+
+                    //return team; //for test
+                    writeToFile(team);
+
+                    // if (answers.options === 'Add an engineer') {
+                    //     console.log(chalk.cyan.bold('\nENGINEER: '));
+                    //     askQuestions ('Engineer');
+                    // } else if (answers.options === 'Add an intern') {
+                    //     console.log(chalk.cyan.bold('\nINTERN: '));
+                    //     answers.role = 'Intern';
+                    //     askQuestions ();
+                    // } else {
+                    //     console.log(chalk.green.bold('\nFINISHED!'));
+                    //     writeToFile(answers);
+                    // }
                 })
                 .catch((error) => {
                     if (error.isTtyError) {
