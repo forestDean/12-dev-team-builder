@@ -56,7 +56,7 @@ function init () {
                         console.log(chalk.red.bold('Switch error'));
                 }
 
-                console.info(team);
+                console.table(team);
                 taskMenu();
             })
             .catch((error) => {
