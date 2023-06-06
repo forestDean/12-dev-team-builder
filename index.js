@@ -77,11 +77,13 @@ const taskMenu = () => {
 
             const task = Object.values(answer);
             if (task == 'Finish building the team') {
-                // console.log(chalk.green.bold("...building!"));
+                console.log(chalk.green.bold("\n...building!"));
                 writeToFile(team);
             } else if (task == 'Add an engineer') {
+                console.log(chalk.cyan.bold('ENGINEER...'));
                 askQuestions ('Engineer'); 
             } else if (task == 'Add an intern') {
+                console.log(chalk.cyan.bold('INTERN...'));
                 askQuestions ('Intern');        
             } else {
                 console.log(chalk.red.bold('Task Menu error'));
