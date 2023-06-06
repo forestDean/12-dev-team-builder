@@ -13,75 +13,32 @@
 
 body {
   font-family: 'Lato', sans-serif;
-  background-color:rgb(236, 235, 235);
+  background-color: rgba(85, 107, 47, 0.1);
 }
 
-.container-fluid {
-  margin-top: 20px;
-  margin-bottom: 40px;
+.jumbotron{
+  background-color: var(--forestGreen);
 }
 
-.container {
-  width: 1000px;
-  margin-top: 20px;
-  margin-bottom: 40px;
-  background-color:white;
-  height: 800px;
+h1 {
+  color: white;
 }
 
-
-/* hack to remove default Bootstrap input styling */
-input:-webkit-autofill,
-input:-webkit-autofill:focus {
-  transition: background-color 600000s 0s, color 600000s 0s;
+.employee-card {
+  width: 300px ;
+  /* border: 1px dashed blue; */
 }
+
+.card-header {
+  background-color: rgba(85, 107, 47, 0.7);
+  color: white;
+}
+
+.card-body{
+  color: var(--forestGreen);
+}
+
 
 .card {
     background-color:white;
-  }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* ================= RESPONSIVE MEDIA QUERIES - MOBILE FIRST ================= */
-
-/* Extra small devices (portrait phones, less than 576px)
-No media query since this is the default in Bootstrap */
-
-/* Small devices (landscape phones, 576px and up) */
-@media (min-width: 576px) {
-
-}
-
-/* Medium devices (tablets, 768px and up) */
-@media (min-width: 768px) { 
-
-}
-
-/* Large devices (desktops, 992px and up) */
-@media (min-width: 992px) {
-
-} 
-
-/* Extra large devices (large desktops, 1200px and up) */
-@media (min-width: 1200px) {
-  
-}
+  } */

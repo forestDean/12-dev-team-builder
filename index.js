@@ -7,45 +7,35 @@ const fs = require("fs");
 const chalk = require("chalk");
 const { questions } = require("./lib/questions");
 const { taskmenu } = require("./lib/questions");
-//const { team } = require("./src/page-template");
 
 const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
-
 const render = require("./src/page-template.js");
 const team = [];
-let defineRole = '';
 
-// TODO: Write Code to gather information about the development team members, and render the HTML file.
 
-// function to render the HTML file.
+// render the HTML file.
 function writeToFile(team) { 
     console.log(chalk.green.bold('\n...writeToFile...')); 
-    //console.log(answers);
     console.log(outputPath);
-    //console.log(manager.email);
-
-    //let markup = team(answers); // unknown error
-    //let markup = render(answers);
 
     fs.writeFile(outputPath, render(team),
-    //fs.writeFile(render, answers,
        (err) =>
          err ? console.error(chalk.red.bold(err)) : console.log(chalk.green.bold('\nSuccessfully written to file'))
         )
 }
 
-// Code to gather information about the development team members
+
+// gather information about the development team members
 function init () {
     console.log(chalk.cyan.bold('\nWelcome to the TEAM generator\n'));
     console.log('Enter the required data for the', chalk.cyan.bold('TEAM MANAGER'),'...');
     askQuestions(); 
 }
-    const askQuestions = (taskRole) => { 
-        // const answers = {}
-        // const answers.role = role;
+    const askQuestions = (taskRole) => { ;
         const defineRole = { role: taskRole };
         console.info(defineRole);
+
         return inquirer
             .prompt(questions, defineRole)
             .then(answers => {
@@ -78,9 +68,9 @@ function init () {
                 }
             });  
         };
-//         askQuestions();   
-// }
 
+
+// Task selection menu
 const taskMenu = () => {
     inquirer
         .prompt(taskmenu)
@@ -101,6 +91,7 @@ const taskMenu = () => {
                 console.log(chalk.red.bold('Task Menu error'));
             }
 
+            // *********************** FIX THIS ***********************
             // switch (task) {
             //     case 'Finish building the team' :
             //         console.log(chalk.green.bold("...building!"));
@@ -125,8 +116,6 @@ const taskMenu = () => {
                 }
             
             })
-    
-    //});
 } 
     
 // function call to initialize program
