@@ -44,13 +44,38 @@ function writeToFile(team) {
             return inquirer
                 .prompt(questions)
                 .then(answers => {
-                    console.info(chalk.green.bold('ANSWERS: '), answers);
-                    //const manager = new Manager (name, id, email, officeNumber); //error
-                    const manager = new Manager (answers.name, answers.id, answers.email, answers.officeNumber);
+                    // if (!answers.role) {
+                    //     //answers.role = 'Manager';
+                    //     const manager = new Manager (answers.name, answers.id, answers.email, answers.officeNumber);
+                    //     team.push(manager);
+                    // }
+                    console.log('Role: ' + answers.role);
+                    switch (answers.role) {
+                        case undefined:
+                            const manager = new Manager (answers.name, answers.id, answers.email, answers.officeNumber);
+                            team.push(manager);
+                            break;
+                        case 'Engineer':
+                            const engineer = new Engineer (answers.name, answers.id, answers.email, answers.github);
+                            team.push(engineer);
+                            break;
+                        case 'Intern':
+                            const intern = new Intern (answers.name, answers.id, answers.email, answers.school);
+                            team.push(intern);
+                            break;
+                        default:
+                            console.log(chalk.red.bold('Switch error'));
+                    }
 
-                    //const manager = new Manager (answers); //creates nested object
-                    team.push(manager);
+
+
+
+
+                    console.info(chalk.green.bold('ANSWERS: '), answers);
+                    // const manager = new Manager (answers.name, answers.id, answers.email, answers.officeNumber);
+                    // team.push(manager);
                     console.info(team);
+                    console.log(answers.role);
 
                     //return team; //for test
                     writeToFile(team);
