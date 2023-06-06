@@ -4,12 +4,14 @@
 
 ## Description
 <a name="description"></a>
-This application will take in information about employees in a software engineering team, then generates an HTML webpage that displays summaries for each person.    
+This application will take in information about employees in a software engineering team, then generates an HTML webpage that displays summaries for each person.   
+
+
 Tests are provided to check the code functionality.
 
 ## Installation
 <a name="installation"></a>
-The directory must be downloaded to a Node.js environment. Version **16.13.0** was used for this build.      
+The directory must be downloaded to a **Node.js environment**. Version **16.13.0** was used for this build.      
 - Relevent dependancies can be installed with `npm install`   
 
 
@@ -17,7 +19,9 @@ The directory must be downloaded to a Node.js environment. Version **16.13.0** w
 <a name="usage"></a>
 
 The app is initialised with the terminal command `node index`   
-- Follow the commands in the terminal window...     
+- Follow the commands in the terminal window...  
+
+  
 ![terminal-window](./assets/images/terminal-screenshot-600.png)
 
 
