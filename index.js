@@ -20,6 +20,7 @@ const team = [];
 function writeToFile(team) { 
     console.log(chalk.green.bold('\n...writeToFile...')); 
     //console.log(answers);
+    console.log(outputPath);
 
     //let markup = team(answers); // unknown error
     //let markup = render(answers);
