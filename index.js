@@ -21,6 +21,7 @@ function writeToFile(team) {
     console.log(chalk.green.bold('\n...writeToFile...')); 
     //console.log(answers);
     console.log(outputPath);
+    //console.log(manager.email);
 
     //let markup = team(answers); // unknown error
     //let markup = render(answers);
@@ -43,10 +44,13 @@ function writeToFile(team) {
             return inquirer
                 .prompt(questions)
                 .then(answers => {
-                    console.info(chalk.green.bold('ANSWERS: '), answers)
-                    //const manager = new Manager (name, id, email, officeNumber);
-                    const manager = new Manager (answers);
+                    console.info(chalk.green.bold('ANSWERS: '), answers);
+                    //const manager = new Manager (name, id, email, officeNumber); //error
+                    const manager = new Manager (answers.name, answers.id, answers.email, answers.officeNumber);
+
+                    //const manager = new Manager (answers); //creates nested object
                     team.push(manager);
+                    console.info(team);
 
                     //return team; //for test
                     writeToFile(team);
