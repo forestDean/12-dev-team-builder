@@ -93,8 +93,14 @@ module.exports = team => {
     <title>forestDean Team</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="../assets/styles/mystyle.css">
     <script src="https://kit.fontawesome.com/c502137733.js"></script>
+    <style>
+    body { background-color: rgba(85, 107, 47, 0.1); }
+    .jumbotron{ background-color: darkolivegreen; }
+    h1 { color: white; }
+    .employee-card { width: 300px; }
+    .card-header { background-color: rgba(85, 107, 47, 0.7); color: white; }
+    </style
 </head>
 
 <body>
